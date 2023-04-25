@@ -1,0 +1,33 @@
+{% load static %}
+<header class="site-header" data-bg-image="" style="background-image: url(&quot;&quot;);">
+				<div class="container">
+					<div class="header-bar">
+						<a href="index.html" class="branding">
+							<img src="{% static 'home/images/logo.png' %}" alt="" class="logo">
+							<div class="logo-type">
+								<h1 class="site-title">Company name</h1>
+								<small class="site-description">Tagline goes here</small>
+							</div>
+						</a>
+
+						<nav class="main-navigation">
+							<button class="menu-toggle"><i class="fa fa-bars"></i></button>
+							<ul class="menu">
+								<li class="home menu-item"><a href="index.html"><img src="{% static 'home/images/home-icon.png' %}" alt="Home"></a></li>
+								<li class="menu-item"><a href="about.html">About</a></li>
+								<li class="menu-item"><a href="services.html">Services</a></li>
+								<li class="menu-item current-menu-item"><a href="projects.html">Our projects</a></li>
+								<li class="menu-item"><a href="contact.html">Contact</a></li>
+							</ul>
+						</nav>
+
+						<div class="mobile-navigation"><ul class="menu">
+								<li class="home menu-item"><a href="index.html"><img src="images/home-icon.png" alt="Home"></a></li>
+								<li class="menu-item"><a href="about.html">About</a></li>
+								<li class="menu-item"><a href="services.html">Services</a></li>
+								<li class="menu-item current-menu-item"><a href="projects.html">Our projects</a></li>
+								<li class="menu-item"><a href="contact.html">Contact</a></li>
+							</ul></div>
+					</div>
+				</div>
+			</header>
