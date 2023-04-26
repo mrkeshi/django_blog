@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'SiteModule',
     #     external package
     'ckeditor'
+    'thumbnail'
 ]
 
 MIDDLEWARE = [
