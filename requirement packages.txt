@@ -1,0 +1,3 @@
+pip install django-ckeditor
+pip install Pillow
+pip install django-thumbnails or pip install thumbnail
