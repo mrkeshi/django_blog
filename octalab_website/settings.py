@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'Products',
     'SiteModule',
     #     external package
-    'ckeditor'
+    'ckeditor',
     'thumbnail'
 ]
 

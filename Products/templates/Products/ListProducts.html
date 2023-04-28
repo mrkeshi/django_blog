@@ -1,6 +1,6 @@
 {% extends 'layout/base.html' %}
 {% load static %}
-{% load thumbnail %}
+
 
 <div class="page-head" data-bg-image="{% static 'home/images/page-head-3.jpg' %}" style="background-image: url(&quot;images/page-head-3.jpg&quot;);">
 				<div class="container">
@@ -26,9 +26,9 @@
 							<div class="project">
 								<div class="project-content">
 									<figure class="project-image">
-                                        {% thumbnail item.image "100x100" crop="center" as im %}
+
     <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-{% endthumbnail %}
+
                                         <img src="{{ product.image.url }}" alt="Project">
 
                                     </figure>
