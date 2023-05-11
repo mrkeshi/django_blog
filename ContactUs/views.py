@@ -5,9 +5,14 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, FormView
 
 from ContactUs.forms import ContactForm
+from SiteModule.models import Settings
 
 
 class Contact(FormView):
     form_class = ContactForm
     template_name = 'ContactUs/contact.html'
     success_url = reverse_lazy('contact')
+    def get_context_data(self, **kwargs):
+        data=super(Contact, self).get_context_data()
+        data['info']=Settings.objects.first()
+        return data

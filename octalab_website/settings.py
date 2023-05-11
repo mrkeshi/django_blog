@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'SiteModule',
     #     external package
     'ckeditor',
-    'thumbnail'
+    'django_render_partial'
+    
+
 ]
 
 MIDDLEWARE = [
