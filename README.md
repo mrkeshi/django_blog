@@ -19,7 +19,7 @@ The following Django apps are under development.
  - SiteModule
  - ContactUs
  - HomeModule
- 
+ - polls
 
 ### Products
 It is related to the products and posts section
