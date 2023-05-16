@@ -9,7 +9,7 @@ from . import models
 
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ['categories', 'author']
-    list_display = ['title', 'price', 'created_date','image']
+    list_display = ['title','categories']
 
 
 admin.site.register(models.Products, ProductAdmin)

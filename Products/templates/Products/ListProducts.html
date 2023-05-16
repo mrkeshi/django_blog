@@ -2,59 +2,558 @@
 {% load static %}
 
 
-<div class="page-head" data-bg-image="{% static 'home/images/page-head-3.jpg' %}" style="background-image: url(&quot;images/page-head-3.jpg&quot;);">
-				<div class="container">
-					<h2 class="page-title">Our Projects</h2>
-					<small>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni </small>
-				</div>
-			</div>
+
 {% block content %}
-<main class="main-content">
-				<div class="fullwidth-block">
-					<div class="container">
-						<h2 class="section-title">Eiusmod tempor incididunt labore</h2>
-						<p>Corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt culpa. omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+    <style>
+        .pagination {
+            margin: 0 auto;
+            display: inline-block;
+        }
 
-						<p>perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
-					</div>
-				</div>
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
 
-				<div class="fullwidth-block">
-					<div class="container">
-						<div class="project-list">
-                            {% for product in Products %}
-							<div class="project">
-								<div class="project-content">
-									<figure class="project-image">
+        .pagination a.active {
+            background-color: #69acc6;
+            color: white;
+        }
 
-    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+        .my_table {
+            /* Tables */
+            /* Responsive scroll-y table */
+            /* Default table */
+            /* Responsive table full */
+            /* Sort table */
+        }
 
-                                        <img src="{{ product.image.url }}" alt="Project">
+        .my_table small {
+            color: #808080;
+        }
 
-                                    </figure>
-									<h3 class="project-title">{{ product.title }}</h3>
-									<p>{{ product.short_description|slice:":87" }}...</p>
-									<a href="{{ product.get_absolute_url }}" class="button">Learn more</a>
-								</div>
-							</div>
-{% endfor %}
-						</div>
-					</div>
-				</div>
+        .my_table button {
+            bottom: 1px;
+            cursor: pointer;
+            margin-right: 8px;
+            position: relative;
+            padding: 4px 11px;
+            border: 1px solid #69acc6;
+            background: none;
+            border-radius: 2px;
+            color: #69acc6;
+            font-size: 1em;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .my_table button:hover {
+            background: #69acc6;
+            color: #fff;
+        }
+
+        .my_table .table-responsive {
+            min-height: 0.01%;
+            overflow-x: auto;
+        }
+
+        @media screen and (max-width: 801px) {
+            .my_table .table-responsive {
+                width: 100%;
+                overflow-y: hidden;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+            }
+        }
+
+        .my_table table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            -webkit-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+            -moz-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+            box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+            margin-bottom: 40px;
+            margin-top: 0.5em;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .my_table table thead tr {
+            border-bottom: 3px solid #69acc6;
+            color: #000;
+        }
+
+        .my_table table tfoot tr {
+            border-top: 3px solid #69acc6;
+        }
+
+        .my_table table thead th, .my_table table tfoot th {
+            background-color: #fff;
+            color: #000;
+            font-size: 0.83333em;
+            line-height: 1.8;
+            padding: 15px 14px 13px 14px;
+            position: relative;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .my_table table tbody tr {
+            background-color: #fff;
+        }
+
+        .my_table table tbody tr:hover {
+            background-color: #eee;
+            color: #000;
+        }
+
+        .my_table table th, .my_table table td {
+            border: 1px solid #bfbfbf;
+            padding: 10px 14px;
+            position: relative;
+            vertical-align: middle;
+        }
+
+        .my_table caption {
+            font-size: 1.111em;
+            font-weight: 300;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 1024px) {
+            .my_table table {
+                font-size: 0.944444em;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .my_table table {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .my_table .table-responsive-full {
+                box-shadow: none;
+            }
+
+            .my_table .table-responsive-full thead tr, .my_table .table-responsive-full tfoot tr {
+                display: none;
+            }
+
+            .my_table .table-responsive-full tbody tr {
+                -webkit-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+                -moz-box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+                box-shadow: 0px 7px 6px -6px rgba(0, 0, 0, 0.28);
+                margin-bottom: 20px;
+            }
+
+            .my_table .table-responsive-full tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            .my_table .table-responsive-full tr, .my_table .table-responsive-full td {
+                display: block;
+            }
+
+            .my_table .table-responsive-full td {
+                background-color: #fff;
+                border-top: none;
+                position: relative;
+                padding-left: 50%;
+            }
+
+            .my_table .table-responsive-full td:hover {
+                background-color: #eee;
+                color: #000;
+            }
+
+            .my_table .table-responsive-full td:hover:before {
+                color: #666;
+            }
+
+            .my_table .table-responsive-full td:first-child {
+                border-top: 1px solid #bfbfbf;
+                border-bottom: 3px solid #0085a6;
+                border-radius: 4px 4px 0 0;
+                color: #000;
+                font-size: 1.11111em;
+                font-weight: bold;
+            }
+
+            .my_table .table-responsive-full td:before {
+                content: attr(data-label);
+                display: inline-block;
+                color: #999;
+                font-size: 14px;
+                font-weight: normal;
+                margin-left: -100%;
+                text-transform: uppercase;
+                width: 100%;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .my_table .table-responsive-full td {
+                padding-left: 14px;
+            }
+
+            .my_table .table-responsive-full td:before {
+                display: block;
+                margin-bottom: 0.5em;
+                margin-left: 0;
+            }
+        }
+
+        .my_table .sort-table-arrows {
+            float: right;
+            transition: 0.3s ease;
+        }
+
+        .my_table .sort-table-arrows button {
+            margin: 0;
+            padding: 4px 8px;
+        }
+
+        .my_table .sort-table th.title, .my_table .sort-table th.composer {
+            width: 20% !important;
+        }
+
+        .my_table .sort-table th.lyrics, .my_table .sort-table th.arranger, .my_table .sort-table th.set, .my_table .sort-table th.info {
+            width: 15% !important;
+        }
+
+        .my_table .sort-table .title {
+            font-weight: bold;
+        }
+
+        .my_table .sort-table .title small {
+            font-weight: normal;
+        }
+
+        @media (max-width: 1024px) {
+            .my_table .sort-table th, .my_table .sort-table-arrows {
+                text-align: center;
+            }
+
+            .my_table .sort-table-arrows {
+                float: none;
+                padding: 8px 0 0;
+                position: relative;
+                right: 0px;
+            }
+
+            .my_table .sort-table-arrows button {
+                bottom: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .my_table .sort-table thead tr {
+                border-bottom: none;
+                display: block;
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .my_table .sort-table thead tr th.arranger {
+                display: none;
+            }
+
+            .my_table .sort-table th {
+                border-bottom: 1px solid #bfbfbf;
+                border-radius: 4px;
+                display: inline-block;
+                font-size: 0.75em;
+                line-height: 1;
+                margin: 3px 0;
+                padding: 10px;
+            }
+
+            .my_table .sort-table th.title, .my_table .sort-table th.composer, .my_table .sort-table th.lyrics, .my_table .sort-table th.set, .my_table .sort-table th.info {
+                width: 100px !important;
+            }
+
+            .my_table .sort-table td.title:before {
+                display: none;
+            }
+
+            .my_table .sort-table td.title {
+                letter-spacing: 0.03em;
+                padding-left: 14px;
+            }
+        }
+
+    </style>
+    <div class="page-head" data-bg-image="{% static 'home/images/page-head-3.jpg' %}"
+         style="background-image: url(&quot;images/page-head-3.jpg&quot;);">
+        <div class="container">
+            <h2 class="page-title">Our Product</h2>
+            <small>You can see our products in four different categories.</small>
+        </div>
+    </div>
+    <main class="main-content">
 
 
-				<div class="fullwidth-block" data-bg-color="#edf2f4" style="background-color: rgb(237, 242, 244);">
-					<div class="container">
-						<div class="subscribe-form">
-							<h2>Join our newsletter</h2>
-							<form action="#">
-								<input type="text" placeholder="Enter your email">
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-					</div>
-				</div>
+        <div class="fullwidth-block">
+            <div class="container">
 
-			</main>
+
+                <h2>You can see the list of products</h2>
+                <br>
+                <div class="tabBox">
+                    <ul class="tabs">
+                        <li><a href="#METAL_SALTS ">METAL SALTS </a></li>
+                        <li><a href="#HPLC_SOLVENTS">HPLC SOLVENTS</a></li>
+                        <li><a href="#SOLVENTS">SOLVENTS</a></li>
+                        <li><a href="#INDICATORS">INDICATORS</a></li>
+                    </ul>
+
+                    <div class="tabContainer">
+                        <div id="METAL_SALTS" style="text-align: center" class="tabContent">
+                            <div class="my_table">
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>row</th>
+                                            <th>product name</th>
+                                            <th>code</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for metal in productsmetalsalt %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ metal.title }}</td>
+                                                <td>{{ metal.code }}</td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="pagination">
+                                {% if productsmetalsalt.has_previous %}
+                                    <a href="?pagemetal={{ productsmetalsalt.previous_page_number }}">&laquo;</a>
+                                {% endif %}
+                                {% for pageNumber in paginatorMetal.page_range %}
+
+                                    <a href="?pagemetal={{ pageNumber }}"
+                                       class="{% if productsmetalsalt.number == pageNumber %} active  {% endif %}">{{ pageNumber }}</a>
+                                {% endfor %}
+
+
+                                {% if productsmetalsalt.has_next %}
+                                    <a href="?pagemetal={{ productsmetalsalt.next_page_number }}">&raquo;</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <div id="HPLC_SOLVENTS" class="tabContent" style="text-align: center">
+                            <div class="my_table">
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>row</th>
+                                            <th>product name</th>
+                                            <th>grade</th>
+                                            <th>packing</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for hplcs in productsHplc %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ hplcs.title }}</td>
+                                                <td>{{ hplcs.grade }}</td>
+                                                <td>{{ hplcs.packing }}</td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="pagination">
+                                {% if productsHplc.has_previous %}
+                                    <a href="{% if productsHplc %} {% else %} {% endif %}?pagehplc={{ productsHplc.previous_page_number }}">&laquo;</a>
+                                {% endif %}
+                                {% for pageNumber in paginatorHplc.page_range %}
+
+                                    <a href="?pagehplc={{ pageNumber }}"
+                                       class="{% if productsHplc.number == pageNumber %} active  {% endif %}">{{ pageNumber }}</a>
+                                {% endfor %}
+
+
+                                {% if productsHplc.has_next %}
+                                    <a href="?pagehplc={{ productsHplc.next_page_number }}">&raquo;</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+
+                        <div id="SOLVENTS" class="tabContent" style="text-align: center">
+                            <div class="my_table">
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>row</th>
+                                            <th>product name</th>
+                                            <th>grade</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for solvent in productsSolvent %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ solvent.title }}</td>
+                                                <td>{{ solvent.grade }}</td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="pagination">
+                                {% if productsSolvent.has_previous %}
+                                    <a href="{% if productsSolvent %} {% else %} {% endif %}?pagesolvent={{ productsSolvent.previous_page_number }}">&laquo;</a>
+                                {% endif %}
+                                {% for pageNumber in paginatorsolvent.page_range %}
+
+                                    <a href="?pagesolvent={{ pageNumber }}"
+                                       class="{% if productsSolvent.number == pageNumber %} active  {% endif %}">{{ pageNumber }}</a>
+                                {% endfor %}
+
+
+                                {% if productsSolvent.has_next %}
+                                    <a href="?pagesolvent={{ productsSolvent.next_page_number }}">&raquo;</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        <div id="INDICATORS" style="text-align: center" class="tabContent">
+                            <div class="my_table">
+                                <div class="table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>row</th>
+                                            <th>product name</th>
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for indic in productsindic %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ indic.title }}</td>
+
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div class="pagination">
+                                {% if productsindic.has_previous %}
+                                    <a href="{% if productsindic %} {% else %} {% endif %}?pageindic={{ productsindic.previous_page_number }}">&laquo;</a>
+                                {% endif %}
+                                {% for pageNumber in paginatorindic.page_range %}
+
+                                    <a href="?pageindic={{ pageNumber }}"
+                                       class="{% if productsindic.number == pageNumber %} active  {% endif %}">{{ pageNumber }}</a>
+                                {% endfor %}
+
+
+                                {% if productsindic.has_next %}
+                                    <a href="?pageindic={{ productsindic.next_page_number }}">&raquo;</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+
 {% endblock %}
 
+{% block script %}
+    <script>
+        function sort(ascending, columnClassName, tableId) {
+            var tbody = document.getElementById(tableId).getElementsByTagName(
+                "tbody")[0];
+            var rows = tbody.getElementsByTagName("tr");
+            var unsorted = true;
+            while (unsorted) {
+                unsorted = false
+                for (var r = 0; r < rows.length - 1; r++) {
+                    var row = rows[r];
+                    var nextRow = rows[r + 1];
+                    var value = row.getElementsByClassName(columnClassName)[0].innerHTML;
+                    var nextValue = nextRow.getElementsByClassName(columnClassName)[0].innerHTML;
+                    value = value.replace(',', ''); // in case a comma is used in float number
+                    nextValue = nextValue.replace(',', '');
+                    if (!isNaN(value)) {
+                        value = parseFloat(value);
+                        nextValue = parseFloat(nextValue);
+                    }
+                    if (ascending ? value > nextValue : value < nextValue) {
+                        tbody.insertBefore(nextRow, row);
+                        unsorted = true;
+                    }
+                }
+            }
+        };
+
+
+        $(".tabContent").hide();
+        $("ul.tabs li:first").addClass("active").show();
+        $(".tabContent:first").show();
+
+        $("ul.tabs li").click(function () {
+            $("ul.tabs li").removeClass("active");
+            $(this).addClass("active");
+            $(".tabContent").hide();
+            var activeTab = $(this).find("a").attr("href");
+            $(activeTab).fadeIn();
+            return false;
+        });
+
+
+        var url = new URL(window.location.href);
+        var keysIterator = url.searchParams.keys();
+        var firstKey = keysIterator.next().value;
+
+        console.log(firstKey); // نمایش نام اولین کلید
+
+        let object = {
+            'pagemetal': document.querySelector('a[href="#METAL_SALTS"]'),
+            'pagehplc': document.querySelector('a[href="#HPLC_SOLVENTS"]'),
+            'pagesolvent': document.querySelector('a[href="#SOLVENTS"]'),
+            'pageindic': document.querySelector('a[href="#INDICATORS"]'),
+        }
+
+        object[firstKey].click()
+    </script>
+{% endblock %}

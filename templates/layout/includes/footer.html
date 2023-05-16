@@ -5,10 +5,10 @@
 					<div class="col-md-3">
 						<div class="widget">
 							<h3 class="widget-title">Our address</h3>
-							<strong>Company name INC</strong>
-							<address>592 Avenue Street, Los Angeles, CA 90012</address>
-							<a href="tel:+1 800 931 812">+1 800 931 812</a> <br>
-							<a href="mailto:office@companyname.com">office@companyname.com</a>
+							<strong>{{ info.title}}</strong>
+							<address>{{ info.address}}</address>
+							<a href="tel:{{ info.phone}}">{{ info.phone}}</a> <br>
+							<a href="mailto:{{ info.email}}">{{ info.email}}/a>
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -40,15 +40,15 @@
 							<h3 class="widget-title">Social media</h3>
 							<p>Deserunt mollitia animi id est laborum dolorum fuga harum quidem rerum facilis.</p>
 							<div class="social-links">
-								<a href="#"><i class="fa fa-facebook"></i></a>
-								<a href="#"><i class="fa fa-twitter"></i></a>
-								<a href="#"><i class="fa fa-google-plus"></i></a>
-								<a href="#"><i class="fa fa-pinterest"></i></a>
+								<a href="{{info.facebook}}"><i class="fa fa-facebook"></i></a>
+								<a href="{{info.twitter}}"><i class="fa fa-twitter"></i></a>
+								<a href="{{info.googleplus}}"><i class="fa fa-google-plus"></i></a>
+								<a href="{{info.pintereset}}"><i class="fa fa-pinterest"></i></a>
 							</div>
 						</div>
 					</div>
 				</div> <!-- .row -->
 
-				<p class="colophon">copyright 2014 Company name. Designed by <a href="http://www.vandelaydesign.com/" title="Designed by VandelayDesign.com" target="_blank">VandelayDesign.com</a>. All rights reserved</p>
+				<p class="colophon">copyright 2014 {{ info.titleSite}}. Designed by <a href="http://www.vandelaydesign.com/" title="Designed by VandelayDesign.com" target="_blank">{{ info.title }}</a>. All rights reserved</p>
 			</div> <!-- .container -->
 		</footer>

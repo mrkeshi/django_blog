@@ -23,10 +23,11 @@ from Products import views as Productviews
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('savePOst',views.bega),4
     path('', views.Home.as_view(), name="home"),
+    path('admin', admin.site.urls),
     path('contact', include("ContactUs.urls")),
-    path('Products', Productviews.ProductsView.as_view(), name="ProductsList"),
+    path('Products', Productviews.ProductsView, name="ProductsList"),
     path('<slug:slug>', Productviews.SingleProduct.as_view(), name="SingleProduct"),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

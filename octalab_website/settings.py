@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'HomePage',
     'Products',
     'SiteModule',
+    'polls',
     #     external package
     'ckeditor',
-    'django_render_partial'
-    
+    'django_render_partial',
+    'active_link'
 
 ]
 
@@ -202,3 +203,10 @@ CKEDITOR_CONFIGS = {
 # Upload File
 MEDIA_ROOT = BASE_DIR / 'medias'
 MEDIA_URL = "/medias/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'djangoalireza@gmail.com'
+EMAIL_HOST_PASSWORD = 'ulchdbcolnarmmlv'
+EMAIL_PORT = '587'

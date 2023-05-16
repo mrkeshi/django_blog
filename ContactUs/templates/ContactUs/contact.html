@@ -7,7 +7,7 @@ Contact us
 <div class="page-head" data-bg-image="{% static 'home/images/page-head-4.jpg'  %}" style="background-image: url(&quot;images/page-head-4.jpg&quot;);">
 				<div class="container">
 					<h2 class="page-title">Contact</h2>
-					<small>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni </small>
+					<small>You can contact us through these ways </small>
 				</div>
 			</div>
 
@@ -22,27 +22,38 @@ Contact us
 						 		<div class="boxed-content">
 						 			<h2 class="section-title">Address</h2>
 						 			<address>
-						 				<p>Company Name INC.</p>
-										<p>423 Avenue Street, Chicago, IL 60610</p>
+									<p>{{ info.address }}</p>
 									</address>
 						 		</div>
 						 	</div>
 						 	<div class="col-md-4">
 						 		<div class="boxed-content">
 						 			<h2 class="section-title">Telephone</h2>
-						 			<p><strong>Office:</strong> +1 800 321 431</p>
-									<p><strong>Support:</strong> +1 800 903 412</p>
+						 			<p><strong>Office:</strong>{{ info.telephone }}</p>
+
 						 		</div>
 						 	</div>
 						 	<div class="col-md-4">
 						 		<div class="boxed-content">
 						 			<h2 class="section-title">Email</h2>
-						 			<p><strong>Office:</strong> <a href="mailto:office@companyname.com">{{ info.email}}</a></p>
+						 			<p><strong>Office:</strong> <a href="mailto:{{ info.email}}">{{ info.email}}</a></p>
 
 						 		</div>
 						 	</div>
 						 </div>
 			 <div class="row contact-form">
+                    {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert {% if message.tags == 'success' %} alert-success {% else %} alert-danger {% endif %} mb-4" style="width: 100%
+                                ;padding: 15px" role="alert">
+
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+
+
+
+                        {% endif %}
                  {% if form.errors %}
     {% for field in form %}
         {% for error in field.errors %}
@@ -74,17 +85,7 @@ Contact us
 					</div>
 				</div>
 
-				<div class="fullwidth-block" data-bg-color="#edf2f4" style="background-color: rgb(237, 242, 244);">
-					<div class="container">
-						<div class="subscribe-form">
-							<h2>Join our newsletter</h2>
-							<form action="#">
-								<input type="text" placeholder="Enter your email">
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-					</div>
-				</div>
+
 
 			</main>
 {% endblock %}

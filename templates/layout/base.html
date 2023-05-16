@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_partial %}
 <html lang="en" class=" js cssgradients csstransforms csstransitions svg inlinesvg svgclippaths">
 <head>
     <meta charset="UTF-8">
@@ -15,6 +16,7 @@
 
     <!-- Loading main css file -->
     <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <link rel="stylesheet" href="{% static 'home/customStyle.css' %}">
 
     <!--[if lt IE 9]>
     <script src="{% static 'home/js/ie-support/html5.js' %}"></script>
@@ -36,12 +38,12 @@
 <body>
 
 <div class="site-content">
-{% include 'layout/includes/header.html' %}
+    {% render_partial 'SiteModule.views.daynamicHeader' %}
     {% block content %}
 
     {% endblock %}
 
-    {% include 'layout/includes/footer.html' %}
+    {% render_partial 'SiteModule.views.daynamicFooter' %}
 
 </div>
 
@@ -49,6 +51,8 @@
 <script src="{% static 'home/js/plugins.js' %}"></script>
 <script src="{% static 'home/js/app.js' %}"></script>
 
+{% block script %}
 
+{% endblock %}
 </body>
 </html>
