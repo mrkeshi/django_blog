@@ -1,7 +1,7 @@
 ﻿# Welcome to octalab_website!
 
 hi
-This project is being develop by Alireza and Parsa
+This project is being develop by Alireza 
 
 ## Technologies used
 
