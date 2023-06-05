@@ -40,3 +40,9 @@ Such as social network links, title, site description, etc setting.
  - render_partial
  - pandas , pd (for reading excel)
  - active_link
+ - 
+## Languages Used
+
+- Python: 60%
+- JavaScript: 30%
+- HTML/CSS: 10%
